@@ -30,8 +30,10 @@ func MostrarEstadisticas() {
 
 	fmt.Printf("------------------------------\n")
 	fmt.Printf("Total recaudado: $%.2f\n", totalRecaudado)
-
 }
+
+func main() {
+	var opcion int
 
 	for {
 		fmt.Println("\n--- Menú Principal ---")
@@ -47,4 +49,57 @@ func MostrarEstadisticas() {
 			fmt.Scanln(&discard)
 			continue
 		}
-		
+
+		switch opcion {
+		case 1:
+			registrarNuevaVenta()
+		case 2:
+			MostrarEstadisticas()
+		case 3:
+			fmt.Println("\nSaliendo del programa...")
+			return
+		default:
+			fmt.Println("\nOpción no válida. Intente de nuevo.")
+		}
+	}
+}
+
+func registrarNuevaVenta() {
+	fmt.Println("\n--- Productos Disponibles ---")
+	fmt.Println("1. Arroz  - $1.25")
+	fmt.Println("2. Leche  - $0.95")
+	fmt.Println("3. Pan    - $0.50")
+	fmt.Print("Seleccione el número del producto: ")
+
+	var opcionProducto int
+	fmt.Scanln(&opcionProducto)
+
+	var nombre string
+	var precio float64
+
+	switch opcionProducto {
+	case 1:
+		nombre = "Arroz"
+		precio = 1.25
+	case 2:
+		nombre = "Leche"
+		precio = 0.95
+	case 3:
+		nombre = "Pan"
+		precio = 0.50
+	default:
+		fmt.Println("Producto no válido. Cancelando venta.")
+		return
+	}
+
+	fmt.Print("Ingrese la cantidad vendida: ")
+	var cantidad int
+	fmt.Scanln(&cantidad)
+
+	if cantidad <= 0 {
+		fmt.Println("La cantidad debe ser mayor a 0. Cancelando venta.")
+		return
+	}
+
+	RegistrarVenta(nombre, precio, cantidad)
+}
