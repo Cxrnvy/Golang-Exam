@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 var nombresProductos []string
 var subtotales []float64
@@ -20,7 +18,7 @@ func MostrarEstadisticas() {
 		return
 	}
 
-	fmt.Println("\n--- Estadísticas de Ventas ---")
+	fmt.Println("\nEstadísticas de Ventas")
 	var totalRecaudado float64
 
 	for i := 0; i < len(nombresProductos); i++ {
@@ -28,7 +26,6 @@ func MostrarEstadisticas() {
 		totalRecaudado += subtotales[i]
 	}
 
-	fmt.Printf("------------------------------\n")
 	fmt.Printf("Total recaudado: $%.2f\n", totalRecaudado)
 }
 
@@ -36,10 +33,10 @@ func main() {
 	var opcion int
 
 	for {
-		fmt.Println("\n--- Menú Principal ---")
-		fmt.Println("1. Registrar una nueva venta")
-		fmt.Println("2. Mostrar estadísticas")
-		fmt.Println("3. Salir")
+		fmt.Println("\n Menú Principal ")
+		fmt.Println("1: Registrar una nueva venta")
+		fmt.Println("2: Mostrar estadísticas")
+		fmt.Println("3: Salir")
 		fmt.Print("Seleccione una opción: ")
 
 		_, err := fmt.Scanln(&opcion)
@@ -65,10 +62,10 @@ func main() {
 }
 
 func registrarNuevaVenta() {
-	fmt.Println("\n--- Productos Disponibles ---")
-	fmt.Println("1. Arroz  - $1.25")
-	fmt.Println("2. Leche  - $0.95")
-	fmt.Println("3. Pan    - $0.50")
+	fmt.Println("\nProductos")
+	fmt.Println("1: Arroz  = $1.25")
+	fmt.Println("2: Leche  = $0.95")
+	fmt.Println("3: Pan    = $0.50")
 	fmt.Print("Seleccione el número del producto: ")
 
 	var opcionProducto int
@@ -88,7 +85,7 @@ func registrarNuevaVenta() {
 		nombre = "Pan"
 		precio = 0.50
 	default:
-		fmt.Println("Producto no válido. Cancelando venta.")
+		fmt.Println("Producto no válido - Venta Cancelada")
 		return
 	}
 
@@ -97,7 +94,7 @@ func registrarNuevaVenta() {
 	fmt.Scanln(&cantidad)
 
 	if cantidad <= 0 {
-		fmt.Println("La cantidad debe ser mayor a 0. Cancelando venta.")
+		fmt.Println("La cantidad debe ser mayor a 0 - Venta Cancelada")
 		return
 	}
 
